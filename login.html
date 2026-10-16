@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Iniciar sesión · MultiFactur</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="login">
+  <section class="login-brand"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 8h44l5 14c0 4-3.500 7-7.500 7S44 26 44 22c0 4-3.500 7-7.500 7h-9C23.500 29 20 26 20 22c0 4-3.500 7-7.500 7S5 26 5 22z"/><path d="M12 29v27h40V29M26 56V42h12v14"/></svg><strong>MultiFactur</strong><span>Sistema de Inventario</span></section>
+  <section class="login-form">
+    <!-- JAVA: enviar usuario y contraseña a validar. Por ahora redirige al menú. -->
+    <form action="menu.html" method="post">
+      <h1>Iniciar sesión</h1>
+      <p class="lead">Ingresa con la cuenta del administrador.</p>
+      <div class="field"><label class="lbl" for="usuario">Usuario</label><input type="text" id="usuario" name="usuario" placeholder="admin" required autocomplete="username"></div>
+      <div class="field"><label class="lbl" for="clave">Contraseña</label><input type="password" id="clave" name="clave" placeholder="Tu contraseña" required autocomplete="current-password"></div>
+      <button class="btn" type="submit">Entrar</button>
+    </form>
+  </section>
+</main>
+</body>
+</html>

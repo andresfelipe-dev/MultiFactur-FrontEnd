@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Productos · MultiFactur</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside class="sidebar">
+  <a class="brand" href="menu.html" aria-label="Ir al inicio"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 8h44l5 14c0 4-3.500 7-7.500 7S44 26 44 22c0 4-3.500 7-7.500 7h-9C23.500 29 20 26 20 22c0 4-3.500 7-7.500 7S5 26 5 22z"/><path d="M12 29v27h40V29M26 56V42h12v14"/></svg><strong>MultiFactur</strong><span>Sistema de Inventario</span></a>
+  <nav class="nav" aria-label="Menú principal"><a href="productos.html" aria-current="page"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg>Productos</a><a href="inventario.html"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9zM9 12h.01M9 16h.01M12 12h4M12 16h4"/></svg>Inventario</a><a href="facturacion.html"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M12 9.500v9M14.500 11.500H11a1.500 1.500 0 0 0 0 3h2a1.500 1.500 0 0 1 0 3H9.500"/></svg>Facturación</a></nav>
+</aside>
+<div class="main">
+  <header class="topbar">
+    <!-- Campana: Java debe generar esta lista con los productos bajos de stock -->
+    <details class="bell">
+      <summary aria-label="Productos con stock bajo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"/></svg><span class="badge">2</span></summary>
+      <div class="dropdown"><h3>Productos con stock bajo</h3><ul><li><span>Gaseosa Colombiana 1,5 L<small>Mínimo: 10</small></span><b>3 uds</b></li><li><span>Detergente Fab 1 kg<small>Mínimo: 12</small></span><b>8 uds</b></li></ul></div>
+    </details>
+    <span class="divider"></span>
+    <details class="user">
+      <summary><span class="avatar"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.500"/><path d="M5 20c1-4 4-5.500 7-5.500s6 1.500 7 5.500"/></svg></span>Administrador <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+      <div class="dropdown"><a href="login.html">Cerrar sesión</a></div>
+    </details>
+  </header>
+  <main class="content">
+    <h1>Productos</h1>
+    <p class="lead">Registra productos nuevos o elimina los que ya no vendes</p>
+<div class="tabs"><input class="sr" type="radio" name="opcion" id="t1" checked><input class="sr" type="radio" name="opcion" id="t2"><div class="cards"><label class="card" for="t1"><span class="disc"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg></span>Registrar producto</label><label class="card" for="t2"><span class="disc"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></svg></span>Eliminar producto</label></div><section class="panel" id="p1"><h2>Registrar un nuevo producto</h2><p class="lead">Completa los datos. Si no eliges categoría, se guarda en "General".</p>
+<!-- JAVA: action del formulario para guardar el producto -->
+<form action="#" method="post"><div class="grid">
+<div class="field full"><label class="lbl" for="codigo_barras">Código de barras</label><input type="text" id="codigo_barras" name="codigo_barras" placeholder="Escanea o escribe el código" required ></div>
+<div class="field full"><label class="lbl" for="nombre">Nombre del producto</label><input type="text" id="nombre" name="nombre" placeholder="Ej: Arroz Diana 500 g" required ></div>
+<div class="field"><label class="lbl" for="precio_venta">Precio de venta</label><input type="number" id="precio_venta" name="precio_venta" placeholder="0" required min="0" step="50"></div>
+<div class="field"><label class="lbl" for="precio_costo">Precio de costo</label><input type="number" id="precio_costo" name="precio_costo" placeholder="0" required min="0" step="50"></div>
+<div class="field"><label class="lbl" for="stock">Cantidad inicial (stock)</label><input type="number" id="stock" name="stock" placeholder="0" required min="0"></div>
+<div class="field"><label class="lbl" for="stock_minimo">Cantidad mínima</label><input type="number" id="stock_minimo" name="stock_minimo" placeholder="0" required min="0"></div>
+<div class="field"><label class="lbl" for="categoria">Categoría</label><select id="categoria" name="categoria"><option value="General">General</option><option value="Granos">Granos</option><option value="Aseo">Aseo</option><option value="Gaseosas">Gaseosas</option><option value="Mecato">Mecato</option><option value="Cuidos">Cuidos</option><option value="Parba">Parba</option></select></div>
+<div class="field"><label class="lbl" for="vencimiento">Fecha de vencimiento</label><input type="date" id="vencimiento" name="vencimiento" placeholder="" ></div>
+</div><div class="actions"><button class="btn ghost" type="reset">Limpiar</button><button class="btn" type="submit">Guardar producto</button></div></form></section><section class="panel" id="p2"><h2>Eliminar un producto</h2><p class="lead">Busca el producto por su código de barras.</p>
+<!-- JAVA: la búsqueda devuelve el producto y se muestra abajo -->
+<form action="#" method="post"><div class="row"><div class="field"><label class="lbl" for="codigo_buscar">Código de barras</label><input type="text" id="codigo_buscar" name="codigo_buscar" placeholder="Escanea o escribe el código" required ></div><button class="btn" type="submit">Buscar</button></div></form>
+<dl class="found"><div><dt>Código</dt><dd>7701234500011</dd></div><div><dt>Producto</dt><dd>Arroz Diana 500 g</dd></div><div><dt>Categoría</dt><dd>Granos</dd></div><div><dt>Precio de venta</dt><dd>$2.800</dd></div><div><dt>Stock</dt><dd>24</dd></div></dl>
+<!-- JAVA: eliminar solo si la respuesta es SI -->
+<form class="confirm" action="#" method="post"><p>¿Seguro que quieres eliminar este producto? Escribe SI para eliminar o NO para cancelar.</p>
+<div class="row"><div class="field"><label class="lbl" for="confirmacion">Respuesta</label><input type="text" id="confirmacion" name="confirmacion" required pattern="SI|NO" maxlength="2" title="Escribe SI o NO en mayúsculas" placeholder="SI / NO"></div><button class="btn danger" type="submit">Confirmar</button></div></form></section></div>
+  </main>
+</div>
+</body>
+</html>

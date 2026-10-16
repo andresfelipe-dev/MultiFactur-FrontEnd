@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facturación · MultiFactur</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside class="sidebar">
+  <a class="brand" href="menu.html" aria-label="Ir al inicio"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 8h44l5 14c0 4-3.500 7-7.500 7S44 26 44 22c0 4-3.500 7-7.500 7h-9C23.500 29 20 26 20 22c0 4-3.500 7-7.500 7S5 26 5 22z"/><path d="M12 29v27h40V29M26 56V42h12v14"/></svg><strong>MultiFactur</strong><span>Sistema de Inventario</span></a>
+  <nav class="nav" aria-label="Menú principal"><a href="productos.html"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg>Productos</a><a href="inventario.html"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9zM9 12h.01M9 16h.01M12 12h4M12 16h4"/></svg>Inventario</a><a href="facturacion.html" aria-current="page"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M12 9.500v9M14.500 11.500H11a1.500 1.500 0 0 0 0 3h2a1.500 1.500 0 0 1 0 3H9.500"/></svg>Facturación</a></nav>
+</aside>
+<div class="main">
+  <header class="topbar">
+    <!-- Campana: Java debe generar esta lista con los productos bajos de stock -->
+    <details class="bell">
+      <summary aria-label="Productos con stock bajo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"/></svg><span class="badge">2</span></summary>
+      <div class="dropdown"><h3>Productos con stock bajo</h3><ul><li><span>Gaseosa Colombiana 1,5 L<small>Mínimo: 10</small></span><b>3 uds</b></li><li><span>Detergente Fab 1 kg<small>Mínimo: 12</small></span><b>8 uds</b></li></ul></div>
+    </details>
+    <span class="divider"></span>
+    <details class="user">
+      <summary><span class="avatar"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.500"/><path d="M5 20c1-4 4-5.500 7-5.500s6 1.500 7 5.500"/></svg></span>Administrador <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+      <div class="dropdown"><a href="login.html">Cerrar sesión</a></div>
+    </details>
+  </header>
+  <main class="content">
+    <h1>Facturación</h1>
+    <p class="lead">Escanea los productos para armar la factura</p>
+    <section class="panel" style="margin-top:30px">
+      <!-- JAVA: cada lectura agrega una línea a la factura -->
+      <form action="#" method="post"><div class="row"><div class="field"><label class="lbl" for="codigo_factura">Código de barras</label><input type="text" id="codigo_factura" name="codigo_factura" placeholder="Escanea el producto" required ></div><button class="btn" type="submit">Agregar</button></div></form>
+      <!-- JAVA: cambiar la cantidad recalcula el subtotal y el total -->
+      <form action="#" method="post">
+        <div class="table-wrap"><table><thead><tr><th>Producto</th><th class="num">Precio</th><th class="num">Cantidad</th><th class="num">Subtotal</th></tr></thead><tbody><tr><td>Arroz Diana 500 g</td><td class="num">$2.800</td><td class="num"><input type="number" name="cantidad" value="2" min="1" aria-label="Cantidad de Arroz Diana 500 g"></td><td class="num">$5.600</td></tr><tr><td>Gaseosa Colombiana 1,5 L</td><td class="num">$4.200</td><td class="num"><input type="number" name="cantidad" value="1" min="1" aria-label="Cantidad de Gaseosa Colombiana 1,5 L"></td><td class="num">$4.200</td></tr><tr><td>Papas Margarita 100 g</td><td class="num">$3.000</td><td class="num"><input type="number" name="cantidad" value="3" min="1" aria-label="Cantidad de Papas Margarita 100 g"></td><td class="num">$9.000</td></tr></tbody></table></div>
+        <div class="total"><span>Total de la factura</span><strong>$18.800</strong></div>
+        <div class="actions"><button class="btn ghost" type="reset">Cancelar factura</button><button class="btn" type="submit">Generar factura</button></div>
+      </form>
+    </section>
+  </main>
+</div>
+</body>
+</html>
