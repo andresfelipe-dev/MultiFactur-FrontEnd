@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Facturación · MultiFactur</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="role-empleado">
+    <aside class="sidebar">
+        <a class="brand" href="menu-empleado.html" aria-label="Ir al inicio"><svg aria-hidden="true" fill="none"
+                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                viewbox="0 0 64 64">
+                <path
+                    d="M10 8h44l5 14c0 4-3.500 7-7.500 7S44 26 44 22c0 4-3.500 7-7.500 7h-9C23.500 29 20 26 20 22c0 4-3.500 7-7.500 7S5 26 5 22z">
+                </path>
+                <path d="M12 29v27h40V29M26 56V42h12v14"></path>
+            </svg><strong>MultiFactur</strong><span>Sistema de Inventario</span></a>
+        <nav class="nav" aria-label="Menú principal"><a href="productos-empleado.html"><svg aria-hidden="true"
+                    class="ico" viewbox="0 0 24 24">
+                    <path d="M21 8 12 3 3 8v8l9 5 9-5z"></path>
+                    <path d="m3 8 9 5 9-5M12 13v8"></path>
+                </svg><span>Productos</span></a>
+            <a href="inventario-empleado.html"><svg aria-hidden="true" class="ico" viewbox="0 0 24 24">
+                    <rect height="17" rx="2" width="14" x="5" y="4"></rect>
+                    <path d="M9 4h6v3H9zM9 12h.01M9 16h.01M12 12h4M12 16h4"></path>
+                </svg><span>Inventario</span></a>
+            <a href="facturacion-empleado.html" aria-current="page"><svg aria-hidden="true" class="ico"
+                    viewbox="0 0 24 24">
+                    <path d="M6 3h9l4 4v14H6z"></path>
+                    <path d="M15 3v4h4M12 9.500v9M14.500 11.500H11a1.500 1.500 0 0 0 0 3h2a1.500 1.500 0 0 1 0 3H9.500">
+                    </path>
+                </svg><span>Facturación</span></a>
+        </nav>
+    </aside>
+    <div class="main">
+        <header class="topbar">
+            <span class="demo-pill" title="Navegación ilustrativa sin autenticación">Vista de empleado</span>
+            <details class="bell">
+                <summary aria-label="Mostrar notificaciones de stock y vencimiento"><svg aria-hidden="true" class="ico"
+                        viewbox="0 0 24 24">
+                        <path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"></path>
+                    </svg><span class="badge">4</span></summary>
+                <div class="dropdown notice-dropdown">
+                    <h3>Notificaciones <span class="example-label">Ejemplo</span></h3>
+                    <p class="dropdown-heading">Stock bajo</p>
+                    <ul>
+                        <li><span>Gaseosa Colombiana 1,5 L<small>3 unidades · mínimo 10</small></span><b>Stock bajo</b>
+                        </li>
+                        <li><span>Detergente Fab 1 kg<small>8 unidades · mínimo 12</small></span><b>Stock bajo</b></li>
+                    </ul>
+                    <p class="dropdown-heading">Próximos a vencer</p>
+                    <ul>
+                        <li><span>Leche entera 1 L<small>Vence el 17/11/2026</small></span><b class="notice-expiry">5
+                                días</b></li>
+                        <li><span>Yogur natural 200 g<small>Vence el 24/11/2026</small></span><b
+                                class="notice-expiry">12 días</b></li>
+                    </ul>
+                    <p class="micro-note">Datos ilustrativos al 12/11/2026. No se actualizan automáticamente.</p>
+                </div>
+            </details><span class="divider"></span>
+            <details class="user">
+                <summary><span class="avatar"><svg aria-hidden="true" class="ico" viewbox="0 0 24 24">
+                            <circle cx="12" cy="8" r="3.500"></circle>
+                            <path d="M5 20c1-4 4-5.500 7-5.500s6 1.500 7 5.500"></path>
+                        </svg></span>Empleado <svg aria-hidden="true" class="ico" viewbox="0 0 24 24">
+                        <path d="m6 9 6 6 6-6"></path>
+                    </svg></summary>
+                <div class="dropdown"><a href="login.html">Cerrar sesión (demo)</a></div>
+            </details>
+        </header>
+        <main class="content">
+            <h1>Facturación</h1>
+            <p class="lead">Crea nuevas facturas y consulta el historial de ventas.</p>
+            <div class="tabs"><input class="sr" type="radio" name="opcion" id="t1" checked><input class="sr"
+                    type="radio" name="opcion" id="t2">
+                <div class="cards"><label class="card" for="t1"><span class="disc"><svg class="ico" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path d="M5 3h14v18l-3-2-4 2-4-2-3 2zM8 8h8M8 12h8M8 16h5" />
+                            </svg></span><span>Nueva factura</span></label><label class="card" for="t2"><span
+                            class="disc"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M4 11a8 8 0 1 1 3 7M4 4v7h7M12 7v5l3 2" />
+                            </svg></span><span>Historial de ventas</span></label></div>
+                <section class="panel" id="p1">
+                    <h2>Nueva factura</h2>
+                    <p class="lead">Escanea los productos y ajusta las cantidades antes de generar el comprobante.</p>
+                    <div class="row">
+                        <div class="field"><label class="lbl" for="codigo_factura">Código de barras</label><input
+                                type="text" id="codigo_factura" name="codigo_factura"
+                                placeholder="Escanea o escribe el código"></div><a class="btn"
+                            href="#detalle-factura-nueva">Agregar</a>
+                    </div>
+                    <div class="table-wrap" id="detalle-factura-nueva">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th class="num">Precio</th>
+                                    <th class="num">Cantidad</th>
+                                    <th class="num">Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Arroz Diana 500 g</td>
+                                    <td class="num">$2.800</td>
+                                    <td class="num"><input type="number" name="cantidad_arroz" min="1" value="2"
+                                            aria-label="Cantidad de Arroz Diana 500 g"></td>
+                                    <td class="num">$5.600</td>
+                                </tr>
+                                <tr>
+                                    <td>Gaseosa Colombiana 1,5 L</td>
+                                    <td class="num">$4.200</td>
+                                    <td class="num"><input type="number" name="cantidad_gaseosa" min="1" value="1"
+                                            aria-label="Cantidad de Gaseosa Colombiana 1,5 L"></td>
+                                    <td class="num">$4.200</td>
+                                </tr>
+                                <tr>
+                                    <td>Papas Margarita 100 g</td>
+                                    <td class="num">$3.000</td>
+                                    <td class="num"><input type="number" name="cantidad_papas" min="1" value="3"
+                                            aria-label="Cantidad de Papas Margarita 100 g"></td>
+                                    <td class="num">$9.000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="total"><span>Total de la factura</span><strong>$18.800</strong></div>
+                    <div class="actions"><button class="btn ghost" type="button">Cancelar factura</button><button
+                            class="btn" type="button">Generar factura</button></div>
+                    <p class="sample-note">El total es ilustrativo y no se recalcula al modificar las cantidades.</p>
+                </section>
+                <section class="panel" id="p2">
+                    <h2>Historial de ventas</h2>
+                    <p class="lead">Consulta facturas completas o el comportamiento de ventas por producto.</p>
+                    <div class="subtabset"><input class="sr" type="radio" name="hist-choice" id="hist1" checked><input
+                            class="sr" type="radio" name="hist-choice" id="hist2">
+                        <div class="subnav"><label class="subnav-link" for="hist1">Consultar facturas</label><label
+                                class="subnav-link" for="hist2">Historial por producto</label></div>
+                        <section class="subpanel" id="histp1">
+                            <h2>Consultar facturas completas</h2>
+                            <p class="lead">Consulta las facturas guardadas, por fecha o en un listado general.</p>
+                            <div class="subtabset"><input class="sr" type="radio" name="bills-choice" id="bills1"
+                                    checked><input class="sr" type="radio" name="bills-choice" id="bills2">
+                                <div class="subnav"><label class="subnav-link" for="bills1">Ver todas</label><label
+                                        class="subnav-link" for="bills2">Filtrar por fecha</label></div>
+                                <section class="subpanel" id="billsp1">
+                                    <h3>Listado de todas las facturas</h3>
+                                    <p class="lead">Se muestran los comprobantes de venta guardados.</p>
+                                    <p class="sample-note">Se listan cuatro facturas de ejemplo. Todas las opciones Ver
+                                        detalle abren el mismo comprobante ilustrativo.</p>
+                                    <div class="table-wrap" id="historial-facturas-todas">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Factura</th>
+                                                    <th>Fecha</th>
+                                                    <th>Contenido</th>
+                                                    <th class="num">Total</th>
+                                                    <th>Detalle</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><strong>FAC-0011</strong></td>
+                                                    <td>12/11/2026</td>
+                                                    <td>3 productos</td>
+                                                    <td class="num">$18.800</td>
+                                                    <td><a class="inline-link" href="#detalle-factura">Ver detalle</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>FAC-0010</strong></td>
+                                                    <td>11/11/2026</td>
+                                                    <td>2 productos</td>
+                                                    <td class="num">$20.700</td>
+                                                    <td><a class="inline-link" href="#detalle-factura">Ver detalle</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>FAC-0009</strong></td>
+                                                    <td>10/11/2026</td>
+                                                    <td>2 productos</td>
+                                                    <td class="num">$14.400</td>
+                                                    <td><a class="inline-link" href="#detalle-factura">Ver detalle</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>FAC-0008</strong></td>
+                                                    <td>10/11/2026</td>
+                                                    <td>2 productos</td>
+                                                    <td class="num">$11.400</td>
+                                                    <td><a class="inline-link" href="#detalle-factura">Ver detalle</a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <details class="invoice-detail" id="detalle-factura" open>
+                                        <summary>Ver factura de ejemplo FAC-0011 · 12/11/2026 <span
+                                                class="detail-chevron">▾</span></summary>
+                                        <div class="invoice-detail-body">
+                                            <div class="invoice-detail-header">
+                                                <div><strong>MultiFactur</strong>
+                                                    <p>Comprobante de venta</p>
+                                                </div>
+                                                <div><strong>FAC-0011</strong>
+                                                    <p>12/11/2026</p>
+                                                </div>
+                                            </div>
+                                            <div class="table-wrap">
+                                                <table>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Producto</th>
+                                                            <th class="num">Precio</th>
+                                                            <th class="num">Cantidad</th>
+                                                            <th class="num">Subtotal</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Arroz Diana 500 g</td>
+                                                            <td class="num">$2.800</td>
+                                                            <td class="num">2</td>
+                                                            <td class="num">$5.600</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Gaseosa Colombiana 1,5 L</td>
+                                                            <td class="num">$4.200</td>
+                                                            <td class="num">1</td>
+                                                            <td class="num">$4.200</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Papas Margarita 100 g</td>
+                                                            <td class="num">$3.000</td>
+                                                            <td class="num">3</td>
+                                                            <td class="num">$9.000</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="total"><span>Total</span><strong>$18.800</strong></div>
+                                            <div class="actions"><button type="button" class="btn ghost"
+                                                    title="Funcionalidad pendiente de integración">Imprimir
+                                                    comprobante</button><button type="button" class="btn"
+                                                    title="Funcionalidad pendiente de integración">Exportar
+                                                    comprobante</button></div>
+                                        </div>
+                                    </details>
+                                </section>
+                                <section class="subpanel" id="billsp2">
+                                    <h3>Buscar facturas por fecha</h3>
+                                    <p class="lead">Selecciona una fecha para visualizar cómo se presentarían los
+                                        resultados.</p>
+                                    <div class="row">
+                                        <div class="field"><label class="lbl" for="fecha_venta">Fecha de
+                                                venta</label><input type="date" id="fecha_venta" name="fecha_venta"
+                                                value="2026-11-12"></div><a class="btn"
+                                            href="#historial-facturas-fecha">Consultar</a>
+                                    </div>
+                                    <p class="sample-note">Resultado de ejemplo correspondiente al 12/11/2026; la
+                                        selección de otra fecha no lo actualiza.</p>
+                                    <div class="table-wrap" id="historial-facturas-fecha">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Factura</th>
+                                                    <th>Fecha</th>
+                                                    <th>Contenido</th>
+                                                    <th class="num">Total</th>
+                                                    <th>Detalle</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><strong>FAC-0011</strong></td>
+                                                    <td>12/11/2026</td>
+                                                    <td>3 productos</td>
+                                                    <td class="num">$18.800</td>
+                                                    <td><a class="inline-link" href="#detalle-factura-fecha">Ver
+                                                            detalle</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <details class="invoice-detail" id="detalle-factura-fecha" open>
+                                        <summary>Ver factura de ejemplo FAC-0011 · 12/11/2026 <span
+                                                class="detail-chevron">▾</span></summary>
+                                        <div class="invoice-detail-body">
+                                            <div class="invoice-detail-header">
+                                                <div><strong>MultiFactur</strong>
+                                                    <p>Comprobante de venta</p>
+                                                </div>
+                                                <div><strong>FAC-0011</strong>
+                                                    <p>12/11/2026</p>
+                                                </div>
+                                            </div>
+                                            <div class="table-wrap">
+                                                <table>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Producto</th>
+                                                            <th class="num">Precio</th>
+                                                            <th class="num">Cantidad</th>
+                                                            <th class="num">Subtotal</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Arroz Diana 500 g</td>
+                                                            <td class="num">$2.800</td>
+                                                            <td class="num">2</td>
+                                                            <td class="num">$5.600</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Gaseosa Colombiana 1,5 L</td>
+                                                            <td class="num">$4.200</td>
+                                                            <td class="num">1</td>
+                                                            <td class="num">$4.200</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Papas Margarita 100 g</td>
+                                                            <td class="num">$3.000</td>
+                                                            <td class="num">3</td>
+                                                            <td class="num">$9.000</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="total"><span>Total</span><strong>$18.800</strong></div>
+                                            <div class="actions"><button type="button" class="btn ghost"
+                                                    title="Funcionalidad pendiente de integración">Imprimir
+                                                    comprobante</button><button type="button" class="btn"
+                                                    title="Funcionalidad pendiente de integración">Exportar
+                                                    comprobante</button></div>
+                                        </div>
+                                    </details>
+                                </section>
+                            </div>
+                        </section>
+                        <section class="subpanel" id="histp2">
+                            <div class="subtabset"><input class="sr" type="radio" name="prod-choice" id="prod1"
+                                    checked><input class="sr" type="radio" name="prod-choice" id="prod2">
+                                <div class="subnav"><label class="subnav-link" for="prod1">Buscar un
+                                        producto</label><label class="subnav-link" for="prod2">Más vendidos</label>
+                                </div>
+                                <section class="subpanel" id="prodp1">
+                                    <h2>Historial de ventas por producto</h2>
+                                    <p class="lead">Revisa la cantidad vendida de un producto durante cada día.</p>
+                                    <div class="row">
+                                        <div class="field"><label class="lbl" for="buscar_producto_historial">Código de
+                                                barras o nombre</label><input type="text" id="buscar_producto_historial"
+                                                name="buscar_producto_historial" value="Arroz Diana 500 g"></div><a
+                                            href="#ventas-producto" class="btn">Buscar</a>
+                                    </div>
+                                    <div id="ventas-producto" class="result-bar"><span class="status-dot"></span>
+                                        Producto: <strong>Arroz Diana 500 g</strong><span
+                                            class="example-label">Ejemplo</span></div>
+                                    <div class="table-wrap">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Fecha</th>
+                                                    <th>Producto</th>
+                                                    <th class="num">Unidades vendidas</th>
+                                                    <th class="num">Ventas del producto</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>12/11/2026</td>
+                                                    <td>Arroz Diana 500 g</td>
+                                                    <td class="num">2</td>
+                                                    <td class="num">$5.600</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>11/11/2026</td>
+                                                    <td>Arroz Diana 500 g</td>
+                                                    <td class="num">4</td>
+                                                    <td class="num">$11.200</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>10/11/2026</td>
+                                                    <td>Arroz Diana 500 g</td>
+                                                    <td class="num">3</td>
+                                                    <td class="num">$8.400</td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th colspan="2">Total vendido</th>
+                                                    <th class="num">9</th>
+                                                    <th class="num">$25.200</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    <p class="sample-note">Historial de ejemplo para el producto Arroz Diana 500 g.</p>
+                                </section>
+                                <section class="subpanel" id="prodp2">
+                                    <h2>Productos más vendidos</h2>
+                                    <p class="lead">Listado ordenado de mayor a menor cantidad vendida.</p>
+                                    <p class="sample-note">Clasificación calculada manualmente a partir de las cuatro
+                                        facturas del ejemplo.</p>
+                                    <div class="table-wrap">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Posición</th>
+                                                    <th>Producto</th>
+                                                    <th class="num">Unidades vendidas</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="rank">1</span></td>
+                                                    <td>Arroz Diana 500 g</td>
+                                                    <td class="num"><strong>9</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="rank">2</span></td>
+                                                    <td>Papas Margarita 100 g</td>
+                                                    <td class="num"><strong>6</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="rank">3</span></td>
+                                                    <td>Gaseosa Colombiana 1,5 L</td>
+                                                    <td class="num"><strong>3</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="rank">4</span></td>
+                                                    <td>Detergente Fab 1 kg</td>
+                                                    <td class="num"><strong>1</strong></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </section>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

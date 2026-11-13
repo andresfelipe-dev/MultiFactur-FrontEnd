@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Administrar empleados · MultiFactur</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="role-administrador">
+    <aside class="sidebar">
+        <a class="brand" href="menu.html" aria-label="Ir al inicio"><svg aria-hidden="true" fill="none"
+                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                viewbox="0 0 64 64">
+                <path
+                    d="M10 8h44l5 14c0 4-3.500 7-7.500 7S44 26 44 22c0 4-3.500 7-7.500 7h-9C23.500 29 20 26 20 22c0 4-3.500 7-7.500 7S5 26 5 22z">
+                </path>
+                <path d="M12 29v27h40V29M26 56V42h12v14"></path>
+            </svg><strong>MultiFactur</strong><span>Sistema de Inventario</span></a>
+        <nav class="nav" aria-label="Menú principal"><a href="productos.html"><svg aria-hidden="true" class="ico"
+                    viewbox="0 0 24 24">
+                    <path d="M21 8 12 3 3 8v8l9 5 9-5z"></path>
+                    <path d="m3 8 9 5 9-5M12 13v8"></path>
+                </svg><span>Productos</span></a>
+            <a href="inventario.html"><svg aria-hidden="true" class="ico" viewbox="0 0 24 24">
+                    <rect height="17" rx="2" width="14" x="5" y="4"></rect>
+                    <path d="M9 4h6v3H9zM9 12h.01M9 16h.01M12 12h4M12 16h4"></path>
+                </svg><span>Inventario</span></a>
+            <a href="facturacion.html"><svg aria-hidden="true" class="ico" viewbox="0 0 24 24">
+                    <path d="M6 3h9l4 4v14H6z"></path>
+                    <path d="M15 3v4h4M12 9.500v9M14.500 11.500H11a1.500 1.500 0 0 0 0 3h2a1.500 1.500 0 0 1 0 3H9.500">
+                    </path>
+                </svg><span>Facturación</span></a>
+            <a href="empleados.html" aria-current="page"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="9" cy="8" r="3" />
+                    <path d="M3 20c.5-4 2.5-6 6-6s5.5 2 6 6M17 6a3 3 0 0 1 0 6M17 14c2.5 0 4 2 4 6" />
+                </svg><span>Empleados</span></a>
+        </nav>
+    </aside>
+    <div class="main">
+        <header class="topbar">
+            <span class="demo-pill" title="Navegación ilustrativa sin autenticación">Vista de administrador</span>
+            <details class="bell">
+                <summary aria-label="Mostrar notificaciones de stock y vencimiento"><svg aria-hidden="true" class="ico"
+                        viewbox="0 0 24 24">
+                        <path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"></path>
+                    </svg><span class="badge">4</span></summary>
+                <div class="dropdown notice-dropdown">
+                    <h3>Notificaciones <span class="example-label">Ejemplo</span></h3>
+                    <p class="dropdown-heading">Stock bajo</p>
+                    <ul>
+                        <li><span>Gaseosa Colombiana 1,5 L<small>3 unidades · mínimo 10</small></span><b>Stock bajo</b>
+                        </li>
+                        <li><span>Detergente Fab 1 kg<small>8 unidades · mínimo 12</small></span><b>Stock bajo</b></li>
+                    </ul>
+                    <p class="dropdown-heading">Próximos a vencer</p>
+                    <ul>
+                        <li><span>Leche entera 1 L<small>Vence el 17/11/2026</small></span><b class="notice-expiry">5
+                                días</b></li>
+                        <li><span>Yogur natural 200 g<small>Vence el 24/11/2026</small></span><b
+                                class="notice-expiry">12 días</b></li>
+                    </ul>
+                    <p class="micro-note">Datos ilustrativos al 12/11/2026. No se actualizan automáticamente.</p>
+                </div>
+            </details><span class="divider"></span>
+            <details class="user">
+                <summary><span class="avatar"><svg aria-hidden="true" class="ico" viewbox="0 0 24 24">
+                            <circle cx="12" cy="8" r="3.500"></circle>
+                            <path d="M5 20c1-4 4-5.500 7-5.500s6 1.500 7 5.500"></path>
+                        </svg></span>Administrador <svg aria-hidden="true" class="ico" viewbox="0 0 24 24">
+                        <path d="m6 9 6 6 6-6"></path>
+                    </svg></summary>
+                <div class="dropdown"><a href="login.html">Cerrar sesión (demo)</a></div>
+            </details>
+        </header>
+        <main class="content">
+            <h1>Administrar empleados</h1>
+            <p class="lead">Crea usuarios empleados y controla quién puede acceder al sistema.</p>
+            <div class="tabs"><input class="sr" type="radio" name="opcion" id="t1" checked><input class="sr"
+                    type="radio" name="opcion" id="t2">
+                <div class="cards"><label class="card" for="t1"><span class="disc"><svg class="ico" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <circle cx="9" cy="8" r="3" />
+                                <path d="M3 20c.5-4 2.5-6 6-6s5.5 2 6 6M17 6a3 3 0 0 1 0 6M17 14c2.5 0 4 2 4 6" />
+                            </svg></span><span>Crear empleado</span></label><label class="card" for="t2"><span
+                            class="disc"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6" />
+                            </svg></span><span>Eliminar empleado</span></label></div>
+                <section class="panel" id="p1">
+                    <h2>Crear empleado</h2>
+                    <p class="lead">Los usuarios nuevos tendrán únicamente el rol de empleado.</p>
+                    <form id="form-empleado" action="#">
+                        <div class="grid">
+                            <div class="field"><label class="lbl" for="empleado_nombre">Nombre completo</label><input
+                                    type="text" id="empleado_nombre" name="empleado_nombre"
+                                    placeholder="Ej: Daniela Muñoz" required></div>
+                            <div class="field"><label class="lbl" for="empleado_usuario">Nombre de usuario</label><input
+                                    type="text" id="empleado_usuario" name="empleado_usuario"
+                                    placeholder="Ej: daniela.munoz" required></div>
+                            <div class="field"><label class="lbl" for="empleado_clave">Contraseña</label><input
+                                    type="password" id="empleado_clave" name="empleado_clave"
+                                    placeholder="Contraseña del empleado" required></div>
+                            <div class="field"><label class="lbl">Rol asignado</label>
+                                <div class="readonly-display">Empleado (fijo)</div>
+                            </div>
+                        </div>
+                        <div class="actions"><button class="btn ghost" type="reset">Limpiar</button><button class="btn"
+                                type="button">Crear empleado</button></div>
+                    </form>
+                    <p class="sample-note">La creación está representada visualmente. No se agregan usuarios reales.</p>
+                </section>
+                <section class="panel" id="p2">
+                    <h2>Eliminar empleado</h2>
+                    <p class="lead">Consulta la lista de empleados y selecciona uno para eliminarlo.</p>
+                    <p class="sample-note">Los empleados son ficticios. El administrador no se muestra en la lista
+                        porque no puede eliminarse.</p>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Empleado</th>
+                                    <th>Usuario</th>
+                                    <th>Rol</th>
+                                    <th>Estado</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Mariana López</td>
+                                    <td>mariana.lopez</td>
+                                    <td>Empleado</td>
+                                    <td><span class="active-tag">Activo</span></td>
+                                    <td><a class="inline-link" href="#eliminar-empleado-demo">Seleccionar</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Carlos Pérez</td>
+                                    <td>carlos.perez</td>
+                                    <td>Empleado</td>
+                                    <td><span class="active-tag">Activo</span></td>
+                                    <td><a class="inline-link" href="#eliminar-empleado-demo">Seleccionar</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Luisa Ramírez</td>
+                                    <td>luisa.ramirez</td>
+                                    <td>Empleado</td>
+                                    <td><span class="active-tag">Activo</span></td>
+                                    <td><a class="inline-link" href="#eliminar-empleado-demo">Seleccionar</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="eliminar-empleado-demo" class="result-bar"><span class="status-dot"></span> Empleado
+                        seleccionado: <strong>Carlos Pérez</strong><span class="example-label">Ejemplo</span></div>
+                    <div class="confirm">
+                        <p>¿Confirmas que deseas eliminar a Carlos Pérez? Escribe SI o NO.</p>
+                        <div class="row">
+                            <div class="field"><label class="lbl"
+                                    for="eliminar_usuario_confirmar">Respuesta</label><input type="text"
+                                    id="eliminar_usuario_confirmar" name="eliminar_usuario_confirmar"
+                                    placeholder="SI / NO" pattern="SI|NO" maxlength="2" title="Escribe SI o NO"></div>
+                            <button type="button" class="btn danger">Confirmar eliminación</button>
+                        </div>
+                    </div>
+                    <p class="sample-note">La lista no cambia porque este frontend no tiene lógica de programación.</p>
+                </section>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
